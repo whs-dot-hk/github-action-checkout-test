@@ -3,6 +3,8 @@ on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+    env:
+      URL: https://api.github.com/repos/keepassxreboot/keepassxc/releases/latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -20,7 +22,7 @@ jobs:
       - run: echo Test >> README.md
       - run: git commit -am "Test"
       - run: git push
-      - run: curl -s https://api.github.com/repos/keepassxreboot/keepassxc/releases/latest | grep tag_name | cut -d '"' -f 4 | xargs printf "keepassxc_version=%s" >> $GITHUB_ENV
+      - run: curl -s $URL | grep tag_name | cut -d '"' -f 4 | xargs printf "keepassxc_version=%s" >> $GITHUB_ENV
       - run: echo "${{ env.keepassxc_version }}" | cmp keepassxc.txt - || echo keepassxc_updated=true >> $GITHUB_ENV
       - run: echo Keepassxc updated
         if: ${{ env.keepassxc_updated == true }}
