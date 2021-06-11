@@ -15,6 +15,8 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: git config --global user.name whs
+      - run: git config --global user.email hswongac@gmail.com
       - run: echo Test >> README.md
       - run: git commit -am "Test"
       - run: git push
