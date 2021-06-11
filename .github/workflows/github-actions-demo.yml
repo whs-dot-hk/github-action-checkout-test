@@ -20,3 +20,5 @@ jobs:
       - run: echo Test >> README.md
       - run: git commit -am "Test"
       - run: git push
+      - run: curl -s https://api.github.com/repos/keepassxreboot/keepassxc/releases/latest | grep tag_name | cut -d '"' -f 4 | xargs printf "keepassxc_version=%s" >> $GITHUB_ENV
+      - run: echo "${{ env.keepassxc_version }}"
