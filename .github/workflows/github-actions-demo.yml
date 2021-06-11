@@ -31,7 +31,7 @@ jobs:
         if: ${{ env.keepassxc_updated == false }}
   Hugo-Test:
     runs-on: ubuntu-latest
-    container:
-      image: gohugoio/hugo:latest
     steps:
-      - run: hugo version
+      - run: curl -OL https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_0.83.1_Linux-64bit.tar.gz
+      - run: tar -xzvf hugo_0.83.1_Linux-64bit.tar.gz
+      - run: ./hugo version
