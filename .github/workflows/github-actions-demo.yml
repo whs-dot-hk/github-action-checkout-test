@@ -32,6 +32,6 @@ jobs:
   Hugo-Test:
     runs-on: ubuntu-latest
     container:
-      image: hugo:latest
+      image: gohugoio/hugo:latest
     steps:
       - run: hugo version
