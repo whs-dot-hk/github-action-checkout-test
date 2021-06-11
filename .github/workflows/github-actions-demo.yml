@@ -24,3 +24,5 @@ jobs:
       - run: echo "${{ env.keepassxc_version }}" | cmp keepassxc.txt - || echo keepassxc_updated=true >> $GITHUB_ENV
       - run: echo Keepassxc updated
         if: ${{ env.keepassxc_updated == true }}
+      - run: echo Keepassxc not updated
+        if: ${{ env.keepassxc_updated == false }}
