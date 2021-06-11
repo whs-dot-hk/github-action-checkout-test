@@ -30,6 +30,7 @@ jobs:
       - run: echo Keepassxc not updated
         if: ${{ env.keepassxc_updated == false }}
   Hugo-Test:
+    runs-on: ubuntu-latest
     container:
       image: hugo:latest
     steps:
