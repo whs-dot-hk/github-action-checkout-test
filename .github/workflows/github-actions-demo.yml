@@ -15,3 +15,6 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: echo Test >> README.md
+      - run: git commit -am "Test"
+      - run: git push
